@@ -1,9 +1,6 @@
----
-title: 'ML,DL-02'
----
+# TA_class02
 
-Machine learning & Deep learning - 02
-===
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/TA_class02/blob/master/TA_class02.ipynb)
 
 ## 作業討論
 
