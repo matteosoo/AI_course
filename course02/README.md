@@ -1,6 +1,6 @@
 # TA_class02
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/AI_course/blob/master/TA_class02.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/AI_course/blob/master/course02/TA_class02.ipynb)
 
 ## 作業討論
 
