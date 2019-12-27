@@ -1,6 +1,6 @@
 # TA_class03
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/TA_class03/blob/master/TA_class03.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/AI_course/blob/master/course03/TA_class03.ipynb)
 
 ## MNIST datasets
 - Input: 手寫數字黑白(灰階)圖片
@@ -37,7 +37,8 @@
 ![](https://i.imgur.com/HccJFE1.png)
 
 ### Problems of DNN
-- DNN的全連接結構會帶來「參數數量膨脹」的問題ex:解析度1080*960的圖，光輸入就有1M多個節點，參數數量就有10^6*L1*L2...個(L為該層節點數)
+- DNN的全連接結構會帶來「參數數量膨脹」的問題
+    - ex: 解析度 1080 * 960 的圖，光輸入就有1M多個節點，參數數量就有 10^6 * L1 * L2...個(L為該層節點數)
 - 彈性決定誰連誰不連的結構又會不利於做Back propagation
 - 雖然可以針對輸入特性做前處理(壓縮、切片......etc)
 - 但能不能從其他的層面解決問題，比方說換模型？
@@ -60,6 +61,7 @@
 - 圖片進來都必須先給過濾器掃一輪作卷積以生成特徵圖
 - 過濾器的內容通常是透過學習過程調整的
 - 越深層的過濾器，其代表的意涵會越抽象
+
 ![](https://i.imgur.com/ZJW81qz.png)
 
 #### 2. Pooling layer (池化層)
