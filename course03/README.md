@@ -1,6 +1,9 @@
 # TA_class03
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/AI_course/blob/master/course03/TA_class03.ipynb)
+- TA_class03.ipynb
+    - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/AI_course/blob/master/course03/TA_class03.ipynb)
+- TA_class03-2.ipynb
+    - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/AI_course/blob/master/course03/TA_class03_2.ipynb)
 
 ## MNIST datasets
 - Input: 手寫數字黑白(灰階)圖片
@@ -46,7 +49,6 @@
 ## Convolutional Neural Networks, CNN 卷積神經網路
 - 簡稱CNN
 - 原理很好理解，但實際操作起來有點難度
-- 對於多媒體的資料處理，幾乎是首選
 - 跟DNN比起來，收斂速度快很多，訓練參數也少
 - 不會因為圖片變形就增加訓練難度(圖片的表達能力提高了)
 
@@ -61,8 +63,12 @@
 - 圖片進來都必須先給過濾器掃一輪作卷積以生成特徵圖
 - 過濾器的內容通常是透過學習過程調整的
 - 越深層的過濾器，其代表的意涵會越抽象
-
-![](https://i.imgur.com/ZJW81qz.png)
+    - Note: 
+    - 注意此圖像素 5 * 5，透過卷積運算後，將會變成像素 3 * 3 圖像
+    - ![](https://i.imgur.com/ZJW81qz.png)
+    - 縮小程度之兩個原因
+        - Border effect
+        - strides (步長)
 
 #### 2. Pooling layer (池化層)
 - 別名Spatial Pooling, Subsampling, Downsampling
@@ -80,8 +86,65 @@
 
 #### 3. Fully-Connected Layer layer (全連接)
 - 又稱全連接層、密集層、Dense layer, 可以對比於稀疏層
+
 ![](https://i.imgur.com/qZqZQTl.png)
 
+### Implement 實作
+- 再一次以MNIST作為範例
+- 上一次的Fully Connected NN的 accuracy約97-98%
+- 簡單的CNN網絡會準確度會提升嗎?
+
+#### 建構一個CNN
+
+```python=
+from keras import layers
+from keras import models
+
+model = models.Sequential()
+model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+```
+- 說明
+    - layers.Conv2D(32, (3, 3)
+        - 32表示filter數量，(3, 3)為fileter長寬
+
+
+#### 卷積後，利用FCNN傳遞給分類器
+- 上一步最後一層為3D tensor(3, 3, 64)
+- 利用**layer.Flatten()** 將3D展開為1D的(576, )
+- 進而以FCNN傳遞到最後softmax分類器
+
+```python=
+model.add(layers.Flatten())
+model.add(layers.Dense(64, activation='relu'))
+model.add(layers.Dense(10, activation='softmax'))
+```
+
+### dogs-vs-cats datasets
+- 共25000張
+- 前12500張是cats，後12500張是dogs
+- 整理data，擷取較小的數據集後..
+    - 貓狗各切半
+    - training 2000 張 (1000/1000)
+    - validation 1000 張 (500/500)
+    - testing 1000張 (500/500)
+- data preprocessing
+    - 將JPG轉為RGB像素network
+    ```python=
+    # 將所有圖像乘以 1./255
+    train_datagen = ImageDataGenerator(rescale=1./255)
+    test_datagen = ImageDataGenerator(rescale=1./255)
+    ```
+    - 並將所有圖像都限制在 150 * 150
+- 丟入fit，training完以後？
+
+![](https://i.imgur.com/DFlBnfZ.png)
+
+#### data augmentation
+![](https://i.imgur.com/QyFZVhS.jpg)
 
 
 ###### tags: `MachineLearing` `DeepLearing`
