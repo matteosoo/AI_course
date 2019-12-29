@@ -16,7 +16,7 @@
 - 60,000 training set / 10,000 testing set
 - 載入資料集
     - 4個Numpy array組成
-    ```python=
+    ```python
     from keras.datasets import mnist
     (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
     ```
@@ -24,7 +24,7 @@
     - reshape (np.array method)
     - 將3維(Dimention)的張量(tensor)，轉為2維(Dimention)的矩陣(matrix)
     - (即一張圖以一陣列vector表示)
-    ```python=
+    ```python
     train_images.shape
     # (60000, 28, 28)
     train_images = train_images.reshape((60000, 28 * 28))
@@ -32,7 +32,7 @@
     ```
     - astype (np.array method)
     - 轉換為float格式 (以計算/255的黑白顏色分布)
-    ```python=
+    ```python
     train_images = train_images.astype('float32') / 255
     ```
 
@@ -96,7 +96,7 @@
 
 #### 建構一個CNN
 
-```python=
+```python
 from keras import layers
 from keras import models
 
@@ -117,7 +117,7 @@ model.add(layers.Conv2D(64, (3, 3), activation='relu'))
 - 利用**layer.Flatten()** 將3D展開為1D的(576, )
 - 進而以FCNN傳遞到最後softmax分類器
 
-```python=
+```python
 model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10, activation='softmax'))
@@ -133,7 +133,7 @@ model.add(layers.Dense(10, activation='softmax'))
     - testing 1000張 (500/500)
 - data preprocessing
     - 將JPG轉為RGB像素network
-    ```python=
+    ```python
     # 將所有圖像乘以 1./255
     train_datagen = ImageDataGenerator(rescale=1./255)
     test_datagen = ImageDataGenerator(rescale=1./255)
