@@ -1,40 +1,11 @@
 # TA_class03
 
-- TA_class03.ipynb
+- TA_class03.ipynb (with MNIST datasets)
     - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/AI_course/blob/master/course03/TA_class03.ipynb)
-- TA_class03-2.ipynb
+- TA_class03_2.ipynb (with Dogs-and-cats datasets)
     - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/AI_course/blob/master/course03/TA_class03_2.ipynb)
-
-## MNIST datasets
-- Input: 手寫數字黑白(灰階)圖片
-    - 28 pixel * 28 pixel 
-    - ![](https://i.imgur.com/xxp1FxQ.png)
-- Output: 數字類別
-    - 2	(字元)
-    - [0 0 1 0 0 0 0 0 0 0]	(One-hot vector)
-- Data type: uint8 (代表可存放2^8的integer數字, 使每一灰階圖像的像素值落在0~255之間)
-- 60,000 training set / 10,000 testing set
-- 載入資料集
-    - 4個Numpy array組成
-    ```python
-    from keras.datasets import mnist
-    (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
-    ```
-- data preprocessing
-    - reshape (np.array method)
-    - 將3維(Dimention)的張量(tensor)，轉為2維(Dimention)的矩陣(matrix)
-    - (即一張圖以一陣列vector表示)
-    ```python
-    train_images.shape
-    # (60000, 28, 28)
-    train_images = train_images.reshape((60000, 28 * 28))
-    # (60000, 28 * 28)
-    ```
-    - astype (np.array method)
-    - 轉換為float格式 (以計算/255的黑白顏色分布)
-    ```python
-    train_images = train_images.astype('float32') / 255
-    ```
+    - Datasets link: https://drive.google.com/drive/folders/17tih4BezlICt_yNyT022jrBP7XYeGycj?usp=sharing
+    - If you want to use colab to run the program, you can add the folder under your Google drive. Note that to mount the drive before you run the code. 
 
 ## Deep Neural Networks, DNN
 ![](https://i.imgur.com/HccJFE1.png)
@@ -89,10 +60,43 @@
 
 ![](https://i.imgur.com/qZqZQTl.png)
 
+## Multi-class classification with CNN
 ### Implement 實作
 - 再一次以MNIST作為範例
 - 上一次的Fully Connected NN的 accuracy約97-98%
 - 簡單的CNN網絡會準確度會提升嗎?
+
+
+### MNIST datasets
+- Input: 手寫數字黑白(灰階)圖片
+    - 28 pixel * 28 pixel 
+    - ![](https://i.imgur.com/xxp1FxQ.png)
+- Output: 數字類別
+    - 2	(字元)
+    - [0 0 1 0 0 0 0 0 0 0]	(One-hot vector)
+- Data type: uint8 (代表可存放2^8的integer數字, 使每一灰階圖像的像素值落在0~255之間)
+- 60,000 training set / 10,000 testing set
+- 載入資料集
+    - 4個Numpy array組成
+    ```python
+    from keras.datasets import mnist
+    (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+    ```
+- data preprocessing
+    - reshape (np.array method)
+    - 將3維(Dimention)的張量(tensor)，轉為2維(Dimention)的矩陣(matrix)
+    - (即一張圖以一陣列vector表示)
+    ```python
+    train_images.shape
+    # (60000, 28, 28)
+    train_images = train_images.reshape((60000, 28 * 28))
+    # (60000, 28 * 28)
+    ```
+    - astype (np.array method)
+    - 轉換為float格式 (以計算/255的黑白顏色分布)
+    ```python
+    train_images = train_images.astype('float32') / 255
+    ```
 
 #### 建構一個CNN
 
@@ -123,7 +127,8 @@ model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10, activation='softmax'))
 ```
 
-### dogs-vs-cats datasets
+## Binary classification with CNN
+### Dogs-vs-cats datasets
 - 共25000張
 - 前12500張是cats，後12500張是dogs
 - 整理data，擷取較小的數據集後..
