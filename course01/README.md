@@ -54,4 +54,4 @@
             - \>>> quit() //you will end of the python program
 
 
-###### tags: `MachineLearing` `DeepLearing`
+###### tags: `MachineLearning` `DeepLearning`
