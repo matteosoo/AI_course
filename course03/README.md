@@ -152,5 +152,5 @@ model.add(layers.Dense(10, activation='softmax'))
 ![](https://i.imgur.com/QyFZVhS.jpg)
 
 
-###### tags: `MachineLearing` `DeepLearing`
+###### tags: `MachineLearning` `DeepLearning`
 
