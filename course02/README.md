@@ -14,4 +14,4 @@
     4. 使用 tanh activation function 代替 relu
 
 
-###### tags: `machinelearning`
+###### tags: `MachineLearning` `DeepLearning`
