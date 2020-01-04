@@ -1,6 +1,6 @@
 # TA_class01
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/TA_class02/blob/master/TA_class01.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/matteosoo/TA_class01/blob/master/TA_class01.ipynb)
 
 ## ML and DL - Warm Up
 - Python Installation
