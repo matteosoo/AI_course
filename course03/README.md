@@ -34,10 +34,11 @@
 - 圖片進來都必須先給過濾器掃一輪作卷積以生成特徵圖
 - 過濾器的內容通常是透過學習過程調整的
 - 越深層的過濾器，其代表的意涵會越抽象
-    - Note: 
+- 卷積核(Kernel):
+    - 又稱為Filters、Features Detectors
     - 此圖像素 5 * 5，透過卷積運算後(如下gif演示)，將會變成像素 3 * 3 圖像
+    - 其中，黃色3*3的Kernel，其值是預訓練的權重，通常用常態分佈隨機產生，再經由訓練更新。因此不要誤會圖中的x1,x0，其只是為了計算方便，不然應該都是一些隨機或常態分佈的小數。
     - ![](https://i.imgur.com/RSX2cIV.gif)
-
     - 縮小程度之兩個原因
         - Border effect
         - strides (步長)
@@ -151,6 +152,10 @@ model.add(layers.Dense(10, activation='softmax'))
 
 #### data augmentation
 ![](https://i.imgur.com/QyFZVhS.jpg)
+
+## Reference
+- https://github.com/exeex/ml-course
+- https://medium.com/@CinnamonAITaiwan/深度學習-cnn原理-keras實現-432fd9ea4935
 
 
 ###### tags: `MachineLearning` `DeepLearning`
